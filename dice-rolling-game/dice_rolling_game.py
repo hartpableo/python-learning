@@ -9,7 +9,7 @@
     # "y or n only"
     # prompt question again
     
-import sys, random
+import random
 
 num_of_dice = 2
 
@@ -23,13 +23,21 @@ while True:
         break
 
 # Roll the dice
-yes_values = ["y", "yes", "sure", "ok", "okay"]
+yes_values = ["y", "yes", "sure", "ok", "okay", "go"]
 no_values = ["n", "no", "nope", "nah"]
 
 while True:
     roll = input("Roll the dice? ").lower().strip()
     if roll in yes_values:
-        print("(" + str(random.randint(1, 6)) + ", " + str(random.randint(1, 6)) + ")")
+        output = "( "
+        counter = 0
+        for i in range(num_of_dice):
+            counter += 1
+            output += str(random.randint(1, 6))
+            if counter < num_of_dice:
+                output += " | "
+        output += " )"
+        print(output)
     elif roll in no_values:
         print("Okay. Good bye!")
         break;
